@@ -25,7 +25,8 @@ void AShooterCharacter::BeginPlay()
 	Gun->SetOwner(this);
 }
 
-bool AShooterCharacter::IsDead() const {
+bool AShooterCharacter::IsDead() const
+{
 	return (Health <= 0);
 }
 
@@ -49,7 +50,8 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 }
 
-float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) {
+float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
 	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 
 	DamageToApply = FMath::Min(Health, DamageToApply);
