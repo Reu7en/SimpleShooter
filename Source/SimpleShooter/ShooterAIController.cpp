@@ -8,11 +8,6 @@
 void AShooterAIController::BeginPlay()
 {
 	Super::BeginPlay();
-}
-
-void AShooterAIController::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
 
 	if (AIBehavior)
 	{
@@ -21,5 +16,11 @@ void AShooterAIController::Tick(float DeltaSeconds)
 		APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
 	}
+}
+
+void AShooterAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }
